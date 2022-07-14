@@ -1,0 +1,64 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Api\ApiResponseTrait;
+
+class {{ class }} extends Controller
+{
+       use ApiResponseTrait;
+    public function index()
+    {
+
+        if(1){
+            return $this->apiResponse( 1, 200 , 'branches found sucess');
+        }else{
+            return $this->apiResponse(1, 404 , 'not found');
+        }
+    }
+
+
+
+
+
+    public function store(Request $request)
+    {
+
+        if(1){
+            return $this->apiResponse( 1, 200 , 'branches found sucess');
+        }else{
+            return $this->apiResponse(1, 404 , 'not found');
+        }
+    }
+
+    public function show($id)
+    {
+        //
+    }
+
+
+
+
+
+    public function update(Request $request, $id)
+    {
+
+        if(1){
+            return $this->apiResponse( 1, 200 , 'branches found sucess');
+        }else{
+            return $this->apiResponse(1, 404 , 'not found');
+        }
+    }
+
+
+    public function destroy($id)
+    {
+       if(1){
+            return $this->apiResponse( 1, 200 , 'branches found sucess');
+        }else{
+            return $this->apiResponse(1, 404 , 'not found');
+        }
+    }
+}

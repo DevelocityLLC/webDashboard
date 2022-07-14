@@ -1,0 +1,138 @@
+.card {
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 10px;
+}
+
+.latest_news {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.latest_news .news {
+    box-shadow: 0 0 8px rgb(0 0 0 / 8%);
+}
+
+.latest_news .sec_title h2 {
+    position: relative;
+    color: #03386d;
+    font-weight: 500;
+    padding-left: 5px;
+}
+
+.latest_news .sec_title h2:before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    width: 5px;
+    height: 20px;
+    background-color: #9966ff;
+    display: block;
+}
+
+.latest_news .sec_title h2 a {
+    float: right;
+}
+
+.latest_news .news .news_image {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.latest_news .news .news_image .image {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top-right-radius: 5px;
+}
+
+.latest_news .news .grid_news_content {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.latest_news .news .grid_news_content .news_content .news_desc a {
+    float: right;
+    margin-right: 10px;
+    color: #e95a5a;
+}
+
+.latest_news .news .news_content {
+    height: 100%;
+    width: 100%;
+    padding: 60px 15px 60px 30px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    background-color: #FFF;
+    position: relative;
+}
+
+.latest_news .news .news_content a {
+    color: #03386d;
+    font-weight: 500;
+}
+
+.latest_news .news .news_content a h2 {
+    font-weight: bold;
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+}
+
+.latest_news .news .news_content a h2 p {
+    float: right;
+    color: #8b7d7d;
+    font-size: 14px;
+    margin: 10px
+}
+
+.latest_news .news .news_content span {
+    position: absolute;
+    right: 0;
+    top: 5%;
+    display: inline-block;
+    padding: 10px;
+    width: 150px;
+    background-color: #9966ff;
+    text-align: center;
+    color: #FFF;
+    font-size: 16px;
+    box-shadow: 0 0 8px rgb(0 0 0 / 8%);
+}
+
+.latest_news .news p {
+    font-size: 18px;
+    color: #8b7d7d;
+}
+
+.news-grid .new {
+    box-shadow: 0 5px 5px rgb(0 0 0 / 8%);
+}
+
+.news-grid .new .content {
+    background-color: #FFF;
+    padding: 10px;
+}
+
+.news-grid .new .content .title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.news-grid .new .content p {
+    font-size: 15px;
+    color: #8b7d7d;
+}
+
+.news-grid .new .content .title span {
+    float: right;
+    color: #8b7d7d;
+    font-size: 14px
+}
+.add-margin{
+    margin-right: 10px
+}
+.rate-icon{
+    width: 34px;
+    height: 34px;
+    margin-right: 5px;
+    background-color: #f5f8fa;
+}
