@@ -47,9 +47,12 @@ Route::group(
             // sections
             Route::resource('/sections' ,SectionController::class);
 
+            // sections
+            // Route::resource('/sections' ,SectionController::class);
+
             // users
             Route::resource('users' , UserController::class);
-            Route::get('/user-section/{id}' , [UserController::class , 'get_sections'])->name('user-section');
+            Route::get('/user-section/{id}' , [UserController::class , 'get_sections']);
             Route::get('export/{user_id}' , [UserController::class , 'export']);
             Route::get('user/uploadcsv', [UserController::class , 'uploadcsv'])->name('users.uploadcsv');
             Route::post('users/importcvs', [UserController::class , 'importcvs'])->name('users.importcvs');;
