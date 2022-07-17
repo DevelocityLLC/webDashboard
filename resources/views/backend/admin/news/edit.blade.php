@@ -33,7 +33,7 @@
                 @csrf
 
                 <div class="row">
-                    <div class="d-flex col-6 flex-column mb-7 fv-row fv-plugins-icon-container">
+                    <div class="d-flex col-md-6 flex-column mb-7 fv-row fv-plugins-icon-container">
                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                             <span class="required">
                             {{ __('admin.title') }}
@@ -43,7 +43,7 @@
                         @error('title') <span class="text-danger">{{ $message }}</span>  @enderror
                     </div>
 
-                    <div class="d-flex col-6 flex-column mb-7 fv-row fv-plugins-icon-container">
+                    <div class="d-flex col-md-6 flex-column mb-7 fv-row fv-plugins-icon-container">
                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                             <span class="required">
                             {{ __('admin.desc') }}
@@ -109,7 +109,7 @@
 
                 <div class="row pt-4">
 
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                             <span class="required">
                                 {{ __('admin.img') }}

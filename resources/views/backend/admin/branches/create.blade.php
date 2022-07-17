@@ -79,11 +79,11 @@
            </div>
 
             <div class="row">
-                <div class="d-flex col-12 flex-column mb-7 fv-row fv-plugins-icon-container">
+                <div class="d-flex col-12 flex-column mb-7 fv-row fv-plugins-icon-container" style="height:100vh">
                     <input type="hidden" name="location" class="form-control" id="location">
                     <input type="hidden" name="lat" class="form-control" id="lat">
                     <input type="hidden" name="lng" class="form-control" id="lng">
-                    <div id="map" style="height: 1000px;width: 1000px;">
+                    <div id="map" style="height: 100%;width: 100%;">
                 </div>
             </div>
 

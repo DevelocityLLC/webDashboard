@@ -33,7 +33,7 @@
             @csrf
 
             <div class="row">
-                <div class="d-flex col-6 flex-column mb-7 fv-row fv-plugins-icon-container">
+                <div class="d-flex col-md-6 flex-column mb-7 fv-row fv-plugins-icon-container">
                     <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                         <span class="required">
                             {{ __('admin.name') }}
@@ -45,7 +45,7 @@
 
                 <div class="row pt-4">
 
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                             <span class="required">
                                 {{ __('admin.img') }}
@@ -68,7 +68,7 @@
             </div><br>
 
            <div class="row">
-                <div class="d-flex col-6 flex-column mb-7 fv-row fv-plugins-icon-container">
+                <div class="d-flex col-md-6 flex-column mb-7 fv-row fv-plugins-icon-container">
                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                             <span class="required">
                                 {{ __('admin.search') }}
@@ -80,11 +80,11 @@
            </div>
 
             <div class="row">
-                <div class="d-flex col-6 flex-column mb-7 fv-row fv-plugins-icon-container">
+                <div class="d-flex col-md-6 flex-column mb-7 fv-row fv-plugins-icon-container" style="height:100vh">
                     <input type="hidden" name="location" class="form-control" id="location">
                     <input type="hidden" name="lat" class="form-control" id="lat">
                     <input type="hidden" name="lng" class="form-control" id="lng">
-                    <div id="map" style="height: 1000px;width: 1000px;">
+                    <div id="map" style="height: 100%;width: 100%;">
                 </div>
             </div>
 
