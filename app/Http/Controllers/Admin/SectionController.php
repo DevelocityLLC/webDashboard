@@ -19,6 +19,13 @@ class SectionController extends Controller
         return view('backend.admin.sections.index' , compact('sections' , 'branches'));
     }
 
+    public function create()
+    {
+        
+        $branches = Branch::all();
+        return view('backend.admin.sections.create' , compact('branches'));
+
+    }
 
     public function store(SectionRequest $request)
     {
@@ -27,7 +34,12 @@ class SectionController extends Controller
         return redirect()->route('sections.index');
     }
 
-
+    public function edit($id)
+    {
+        $section = Section::findOrfail($id);
+        $branches = Branch::all();
+        return view('backend.admin.sections.edit' , compact('branches' , 'section'));
+    }
     public function update(SectionRequest $request, $id)
     {
         $section = Section::findOrfail($id);

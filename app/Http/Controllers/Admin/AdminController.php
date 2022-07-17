@@ -42,7 +42,7 @@ class AdminController extends Controller
             'email'=> $request->email,
             'job_title' => $request->job_title ,
             'password' => bcrypt($request->password),
-            'img'=> $file_name ,
+            'img'=> $file_name??'',
             'email_verified_at'=>now(),
             'remember_token'=>Str::random(10),
         ]);

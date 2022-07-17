@@ -14,6 +14,10 @@ class NewsTypeController extends Controller
         $news = NewsType::orderBy('id', 'DESC')->get();
         return view('backend.admin.news-type.index' , compact('news'));
     }
+    public function create()
+    {
+        return view('backend.admin.news-type.create');
+    }
 
 
     public function store(Request $request)
@@ -24,6 +28,11 @@ class NewsTypeController extends Controller
         return redirect()->route('news-type.index');
     }
 
+    public function edit($id)
+    {
+        $new = NewsType::findOrfail($id);
+        return view('backend.admin.news-type.edit', compact('new'));
+    }
 
 
     public function update(Request $request, $id)

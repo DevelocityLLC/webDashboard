@@ -21,8 +21,10 @@
                 <span class="card-label fw-bolder fs-3 mb-1"> {{ __('admin.sections') }}</span>
             </h3>
             <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a user">
-                <a href="#" class="btn btn-primary er fs-6 px-8 py-4" data-bs-toggle="modal" data-bs-target="#Add_new_section"> {{ __('admin.add_section') }}</a>
-                @include('backend.admin.sections.create')
+                <a href="{{ route('sections.create') }}" class="btn btn-primary">
+                    <span><i class="fa fa-plus"></i></span>
+                    <span>  {{ __('admin.add_section') }} </span>
+                </a>
             </div>
         </div>
         <!--end::Header-->
@@ -70,7 +72,7 @@
                                 <td>
                                     <div class="d-flex justify-content-end flex-shrink-0">
 
-                                        <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#Edit{{ $section->id }}">
+                                        <a href="{{ route('sections.edit' , $section->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                             <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                             <span class="svg-icon svg-icon-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -80,19 +82,19 @@
                                             </span>
                                             <!--end::Svg Icon-->
                                         </a>
-                                        @include('backend.admin.sections.edit')
 
-                                        <a href="" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Delete{{ $section->id }}">
-                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-                                            <span class="svg-icon svg-icon-3">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                    <path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="black" />
-                                                    <path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="black" />
-                                                    <path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="black" />
-                                                </svg>
-                                            </span>
-                                        </a>
-                                        @include('backend.admin.sections.delete')
+                                        <form method="POST" action="{{ route('sections.destroy', $section->id ) }}" class="d-inline-block">
+                                            @csrf @method("DELETE")
+                                            <button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" onclick="var result = confirm('هل أنت متأكد من عملية الحذف ؟');if(result){}else{event.preventDefault()}">
+                                                <span class="svg-icon svg-icon-3">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                        <path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="black" />
+                                                        <path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="black" />
+                                                        <path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="black" />
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                        </form>
 
                                     </div>
                                 </td>
