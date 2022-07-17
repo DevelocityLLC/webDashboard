@@ -99,7 +99,7 @@
         <!--end::Menu separator-->
 
         <!--begin::Menu item-->
-        <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+        <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
             <a href="#" class="menu-link px-5">
                 <span class="menu-title position-relative">{{ __('admin.Language') }}
             </a>
@@ -132,7 +132,7 @@
         </div>
 
         {{-- notification --}}
-        <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+        <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
             <a href="#" class="menu-link px-5">
                 <span class="menu-title position-relative">{{ __('admin.Notifications') }}
             </a>
