@@ -59,14 +59,14 @@ use Illuminate\Support\Facades\Route;
 
         // users
         Route:: group(['prefix' => 'users'] , function(){
-            Route::get('/' , [UserController::class , 'index']);
-            Route::get('/get-user/{id}' , [UserController::class , 'getUser']);
+            Route::get('/{id?}' , [UserController::class , 'index']);
+            //Route::get('/get-user/{id}' , [UserController::class , 'getUser']);
             Route::post('/delete/{id}' , [UserController::class , 'destroy']);
         });
 
          //tasks
          Route::group(['prefix' => 'tasks'] , function(){
-            Route::get('/' , [TaskController::class , 'index']);
+            Route::get('/{id?}' , [TaskController::class , 'index']);
             Route::post('/create' , [TaskController::class , 'store']);
             Route::post('/update/{id}' , [TaskController::class , 'update']);
             Route::post('/delete/{id}' , [TaskController::class , 'destroy']);
@@ -83,21 +83,23 @@ use Illuminate\Support\Facades\Route;
 
          //news
          Route::group(['prefix' => 'news'] , function(){
-            Route::get('/' , [NewsController::class , 'index']);
+            Route::get('/{id?}' , [NewsController::class , 'index']);
             Route::post('/create' , [NewsController::class , 'store']);
             Route::post('/update/{id}' , [NewsController::class , 'update']);
             Route::post('/delete/{id}' , [NewsController::class , 'destroy']);
         });
         
-        // complaint-user
-        Route::get('/user-complaints' , [ComplaintController::class , 'index']);
+
+         //complaints
+         Route::group(['prefix' => 'user-complaints'] , function(){
+            Route::get('/{id?}' , [ComplaintController::class , 'index']);
+        });
         
-         // user-requirements
-        Route::get('/user-requirements' , [RequirementController::class , 'index']);
-
-
-
-
+         //requirements
+         Route::group(['prefix' => 'user-requirements'] , function(){
+            Route::get('/{id?}' , [RequirementController::class , 'index']);
+            Route::post('/{id}/update-status' , [RequirementController::class , 'update_status']);
+        });
 
 
 

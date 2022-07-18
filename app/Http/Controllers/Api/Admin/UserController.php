@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
     use ApiResponseTrait;
-    public function index()
+    public function index($id=null)
     {
-        $users = User::orderBy('id', 'DESC')->get();
+        $users = User::when($id != null, function($q) use($id){
+                $q->where('id', $id);
+        })->orderBy('id', 'DESC')->get();
+
         if($users){
             return $this->apiResponse(UserResource::collection($users) , 200 , 'users found');
         }else{
@@ -78,7 +81,7 @@ class UserController extends Controller
         }
 
     }
-
+/*
     public function getUser($id)
     {
        $user = User::Where('id' , $id)->first();
@@ -89,7 +92,7 @@ class UserController extends Controller
         return $this->apiResponse(null , 404 , 'not found');
        }
     }
-
+*/
     public function update(Request $request , $id)
     {
 
