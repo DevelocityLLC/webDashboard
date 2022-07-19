@@ -23,11 +23,11 @@ use Illuminate\Support\Facades\Route;
 
     // users
     Route:: group(['prefix' => 'user'] , function(){
-        Route::post('/register' , [UserController::class , 'register']);
+        
         Route::post('/login' , [UserController::class , 'login']);
         Route::post('/update/{id}' , [UserController::class , 'update']);
     });
-    
+
     Route::group(['middleware' => 'auth.guard:user-api'] , function(){
 
         // complaints
@@ -47,10 +47,10 @@ use Illuminate\Support\Facades\Route;
             Route::post('/delete/{id}' , [RequiremetController::class , 'destroy']);
 
         });
-        
+
         // news
         Route::get('/user-news' , [StaticController::class , 'news']);
-        
+
          // tasks
         Route::get('/user-tasks' , [StaticController::class , 'tasks']);
 

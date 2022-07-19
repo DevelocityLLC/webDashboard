@@ -37,11 +37,12 @@ class TaskController extends Controller
         }
 
         $request_data['admin_id'] = auth('admin-api')->user()->id;
+        $request_data['status'] = 'waiting';
 
         $task = Task::create($request_data);
 
         $task->sections()->sync($request->section_ids);
-        $task->users()->sync($request->user_ids); 
+        $task->users()->sync($request->user_ids);
 
         if($task){
           return $this->apiResponse(new TaskResource($task) , 200 , 'task creates sucessfully');
@@ -61,14 +62,14 @@ class TaskController extends Controller
             $request_data = $request->except(['section_ids', 'user_ids']);
 
             if ($request->hasFile('img')) {
-                
+
                 Storage::disk('tasks')->delete('/'.$task->img);
                 $image = $request->file('img');
                 $request->img->move(public_path('/Attachments/tasks/'), $image->getClientOriginalName());
                 $request_data['img'] = $image->getClientOriginalName();
             }
 
-            
+
             $request_data['admin_id'] = auth('admin-api')->user()->id;
 
             $task->update($request_data);
@@ -91,7 +92,7 @@ class TaskController extends Controller
         $task = Task::Where('id' , $id)->first();
 
         if($task){
-                    
+
             if (!empty($task->img)) {
 
                 Storage::disk('tasks')->delete('/'.$task->img);
@@ -104,29 +105,19 @@ class TaskController extends Controller
         }
     }
 
-        
-    public function rate(RateRequest $request, $id)
-    {
-        
-        $task = Task::Where('id' , $id)->first();
 
-        $users_task_rate = array();
-        foreach($request->rate_task as $key=>$value){
-            $j=0;
-            foreach($value as $val){
-                $users_task_rate[$j][$key] = $val;
-                $j++;
-            }
-        }
+   public function changStatus($id , Request $request)
+   {
+      $task = Task::where('id' , $id)->first();
 
-        foreach($users_task_rate as $user_task_rate){
+      if($task){
+        $task->update(['status' => $request->status]);
 
-            $task->users()->updateExistingPivot($user_task_rate['user_id'], ['rate'=>$user_task_rate['rate'], 'desc'=>$user_task_rate['desc']]);
-        }
-
-                    
-        return $this->apiResponse(true , 200 , 'task rated sucessfully');
+        return $this->apiResponse(true , 200 , 'task update status sucessfully');
+      }
 
 
-    }
+
+
+   }
 }

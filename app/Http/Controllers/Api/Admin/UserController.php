@@ -42,14 +42,8 @@ class UserController extends Controller
         $user = User::create($request_data);
 
         if($user){
-            $token = $user->createToken('token-name')->plainTextToken;
 
-            $response = [
-            'user' => new UserResource($user),
-            'token' => $token
-            ];
-
-            return $this->apiResponse($response , 200 , 'user created sucessfully');
+            return $this->apiResponse(new UserResource($user) , 200 , 'user created sucessfully');
         }else{
             return $this->apiResponse(null , 404 , 'user not found');
         }

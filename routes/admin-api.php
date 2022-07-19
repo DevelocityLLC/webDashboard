@@ -60,6 +60,7 @@ use Illuminate\Support\Facades\Route;
         // users
         Route:: group(['prefix' => 'users'] , function(){
             Route::get('/' , [UserController::class , 'index']);
+            Route::post('/create' , [UserController::class , 'register']);
             Route::get('/get-user/{id}' , [UserController::class , 'getUser']);
             Route::post('/delete/{id}' , [UserController::class , 'destroy']);
         });
@@ -88,10 +89,10 @@ use Illuminate\Support\Facades\Route;
             Route::post('/update/{id}' , [NewsController::class , 'update']);
             Route::post('/delete/{id}' , [NewsController::class , 'destroy']);
         });
-        
+
         // complaint-user
         Route::get('/user-complaints' , [ComplaintController::class , 'index']);
-        
+
          // user-requirements
         Route::get('/user-requirements' , [RequirementController::class , 'index']);
 
