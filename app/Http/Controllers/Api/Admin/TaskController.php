@@ -120,4 +120,30 @@ class TaskController extends Controller
 
 
    }
+
+
+   public function rate(Request $request, $id)
+   {
+
+        $task = Task::Where('id' , $id)->first();
+
+        $users_task_rate = array();
+        foreach($request->rate_task as $key=>$value){
+            $j=0;
+            foreach($value as $val){
+                $users_task_rate[$j][$key] = $val;
+                $j++;
+            }
+        }
+
+        foreach($users_task_rate as $user_task_rate){
+
+            $task->users()->updateExistingPivot($user_task_rate['user_id'], ['rate'=>$user_task_rate['rate'], 'desc'=>$user_task_rate['desc']]);
+        }
+
+
+        return $this->apiResponse(true , 200 , 'task rated sucessfully');
+
+
+   }
 }
