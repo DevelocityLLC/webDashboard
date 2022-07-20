@@ -29,7 +29,7 @@ class AdminController extends Controller
     }
 
 
-    public function register(AdminRegisterRequest $request)
+    public function create(AdminRegisterRequest $request)
     {
 
 

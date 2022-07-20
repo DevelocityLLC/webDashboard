@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
     // Auth admins
     Route::group(['prefix' => 'admin'] , function(){
-        Route::post('/register' , [AdminController::class , 'register']);
+
         Route::post('/login' , [AdminController::class , 'login']);
     });
 
@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
         Route::group(['prefix' => 'admins'] , function(){
             Route::get('/' , [AdminController::class , 'index']);
             Route::get('/get-admin/{id}' , [AdminController::class , 'getAdmin']);
+            Route::post('/create' , [AdminController::class , 'create']);
             Route::post('/update/{id}' , [AdminController::class , 'update']);
             Route::post('/delete/{id}' , [AdminController::class , 'destroy']);
         });
