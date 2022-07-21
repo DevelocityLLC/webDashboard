@@ -11,7 +11,9 @@ class AssignGuard
 
      public function handle(Request $request, Closure $next , $guard = null)
     {
-
+        
+        return auth($guard)->check() ? $next( $request ) : $this->apiResponse(null , 403 , 'Unauthorized');
+        /*
         if($guard != null){
           auth()->shouldUse($guard);
         }
@@ -23,6 +25,8 @@ class AssignGuard
             return $this->apiResponse(null , 403 , 'unauthintation Admin');
         }
 
-        return $next($request);
+        return $next($request); 
+        
+        */
     }
 }
