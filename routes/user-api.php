@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\Admin\UserController;
+use App\Http\Controllers\Api\User\UserController;
 use App\Http\Controllers\Api\User\ComplaintController;
 use App\Http\Controllers\Api\User\RequiremetController;
 use App\Http\Controllers\Api\User\StaticController;
@@ -23,12 +23,17 @@ use Illuminate\Support\Facades\Route;
 
     // users
     Route:: group(['prefix' => 'user'] , function(){
-        Route::post('/register' , [UserController::class , 'register']);
         Route::post('/login' , [UserController::class , 'login']);
-        Route::post('/update/{id}' , [UserController::class , 'update']);
     });
     
     Route::group(['middleware' => 'auth.guard:user-api'] , function(){
+
+
+        // users
+        Route:: group(['prefix' => 'user'] , function(){
+            Route::get('/profile' , [UserController::class , 'profile']);
+            Route::post('/update' , [UserController::class , 'update']);
+        });
 
         // complaints
         Route:: group(['prefix' => 'complaints'] , function(){

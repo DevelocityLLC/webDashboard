@@ -27,7 +27,7 @@ class UserController extends Controller
         }
     }
 
-    public function register(UserRequest $request)
+    public function store(UserRequest $request)
     {
         $request_data = $request->all();
 
@@ -61,27 +61,7 @@ class UserController extends Controller
 
     }
 
-    public function login(Request $request)
-    {
 
-        if(!auth('user')->attempt($request->only(['email', 'password']))){
-            return response()->json([
-                'status' => false,
-                'message' => 'Email & Password does not match with our record.',
-            ], 401);
-        }else{
-
-            $user = User::where(['email' => $request->email])->first();
-            $response = [
-                'user' => new UserResource($user) ,
-                'token' => $user->createToken('token-name')->plainTextToken
-            ];
-
-            return $this->apiResponse($response , 200 , 'user login sucessfully');
-        }
-
-    }
-/*
     public function getUser($id)
     {
        $user = User::Where('id' , $id)->first();
@@ -92,42 +72,49 @@ class UserController extends Controller
         return $this->apiResponse(null , 404 , 'not found');
        }
     }
-*/
-    public function update(Request $request , $id)
+
+
+    public function update(UserRequest $request, $id)
     {
+        $user = User::find($id);
 
-        $user = User::where('id' , $id)->first();
-        if($user){
-            $request_data = $request->all();
+        if(!$user){
+            return $this->apiResponse(null , 404 , 'user not found');
+        }
+
+        $request_data = $request->all();
+
+        if ($request->hasFile('img')) {
+            $image = $request->file('img');
+            $file_name = $image->getClientOriginalName();
+            $request->img->move(public_path('/Attachments/users/'), $file_name);
+            $request_data['img'] = $file_name;
+        }
+        if(request()->has('password') && $request->password != null){
             $request_data['password'] = bcrypt($request->password);
-            $request_data['email_verified_at'] = now();
-            $request_data['remember_token'] = Str::random(10);
-            $user->update($request_data);
+        }
 
-            if ($request->hasFile('img')) {
-                $new_file_name = $request->file('img')->getClientOriginalName();
-                $old_file_name = $user->img;
-                $user->img = $new_file_name ;
-                Storage::disk('users')->delete('/'.$old_file_name);
-                $request->img->move(public_path('/Attachments/users/'), $new_file_name);
-            }
+        $user->fill($request_data);
+        
+        $user->save();
 
-            $user->save();
-            $response =[
-                'user' => new UserResource($user) ,
-                'token' => $user->createToken('token-name')->plainTextToken
+        if($user){
+
+            $token = $user->createToken('token-name')->plainTextToken;
+
+            $response = [
+                'user' => new UserResource($user),
+                'token' => $token
             ];
 
-            return $this->apiResponse($response , 200 , 'user update sucessfully');
+            return $this->apiResponse($response , 200 , 'user created sucessfully');
         }else{
-            return $this->apiResponse(null , 404 , 'not found');
+            return $this->apiResponse(null , 404 , 'something went wrong');
         }
 
 
 
     }
-
-
     public function destroy($id)
     {
         $old_file_name = '';

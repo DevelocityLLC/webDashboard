@@ -32,7 +32,7 @@ class UserRequest extends FormRequest
                 'name' => 'required',
                 'email' => 'required|email',
                 'img' => 'nullable|mimes:png,jpg,jpeg' ,
-                'password' => 'required' ,
+                'password' => 'nullable' ,
                 'job_title' => 'required',
                 'job_desc' => 'required',
                 'kpis' => 'required' ,

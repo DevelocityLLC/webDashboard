@@ -17,7 +17,7 @@ class ComplaintResource extends JsonResource
             'user_id' => $this->user_id ,
             'user'   => new UserResource($this->user),
             //'task_id' => $this->task_id ,
-
+            'date'                  => $this->created_at->diffForHumans()
         ];
     }
 }

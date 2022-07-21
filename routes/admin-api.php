@@ -60,7 +60,9 @@ use Illuminate\Support\Facades\Route;
         // users
         Route:: group(['prefix' => 'users'] , function(){
             Route::get('/{id?}' , [UserController::class , 'index']);
-            //Route::get('/get-user/{id}' , [UserController::class , 'getUser']);
+            Route::get('/get-user/{id}' , [UserController::class , 'getUser']);
+            Route::post('/create' , [UserController::class , 'store']);
+            Route::put('/update/{id}' , [UserController::class , 'update']);
             Route::post('/delete/{id}' , [UserController::class , 'destroy']);
         });
 
