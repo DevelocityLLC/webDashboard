@@ -16,10 +16,10 @@ class ComplaintRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'nullable',
             'message' => 'required',
-            'type' => 'required' ,
-            'task_id' => 'required|exists:tasks,id' ,
+            'type' => 'nullable' ,
+            'task_id' => 'nullable|exists:tasks,id' ,
 
         ];
     }

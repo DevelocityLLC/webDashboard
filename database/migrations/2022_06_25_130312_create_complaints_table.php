@@ -11,7 +11,7 @@ class CreateComplaintsTable extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->text('message');
             $table->enum('type' , ['general' , 'task'])->default('general');
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();

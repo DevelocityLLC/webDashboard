@@ -11,11 +11,12 @@ class ComplaintResource extends JsonResource
     {
         return [
             'id' => $this->id ,
-            'title' => $this->title ,
+            //'title' => $this->title ,
             'message' => $this->message ,
             'type' => $this->type ,
             'user_id' => $this->user_id ,
-            'task_id' => $this->task_id ,
+            'user'   => new UserResource($this->user),
+            //'task_id' => $this->task_id ,
 
         ];
     }
