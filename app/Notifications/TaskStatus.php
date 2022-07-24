@@ -33,7 +33,7 @@ class TaskStatus extends Notification
            'id' => $this->task->id ,
            'title' => 'The status of the task has been changed to ' ,
            'status' => $this->task->status ,
-           'added_by' => auth('user')->user()->name ,
+           'added_by' => auth('user')->user()->name ?? auth('user-api')->user()->name  ,
            'created_at' => date('d/m/Y')
 
         ];

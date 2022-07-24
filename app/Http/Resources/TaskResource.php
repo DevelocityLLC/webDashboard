@@ -26,7 +26,8 @@ class TaskResource extends JsonResource
             'img'           => url('/Attachments/tasks/' . $this->img),
             'status'        => $this->status,
             'start_date'    => $this->start_date,
-            'end_date'      => $this->end_date
+            'end_date'      => $this->end_date,
+            'created_at'    => date('Y-m-d h:i A', strtotime($this->created_at))
         ];
     }
 }

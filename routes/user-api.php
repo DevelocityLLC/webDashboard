@@ -4,6 +4,8 @@ use App\Http\Controllers\Api\User\UserController;
 use App\Http\Controllers\Api\User\ComplaintController;
 use App\Http\Controllers\Api\User\RequiremetController;
 use App\Http\Controllers\Api\User\StaticController;
+use App\Http\Controllers\Api\User\TaskController;
+use App\Http\Controllers\Api\User\NewsController;
 
 
 use Illuminate\Http\Request;
@@ -27,14 +29,25 @@ use Illuminate\Support\Facades\Route;
     });
     
     Route::group(['middleware' => 'auth.guard:user-api'] , function(){
-
-
+        
         // users
         Route:: group(['prefix' => 'user'] , function(){
             Route::get('/profile' , [UserController::class , 'profile']);
             Route::post('/update' , [UserController::class , 'update']);
-        });
 
+            // tasks
+            Route:: group(['prefix' => 'tasks'] , function(){
+                Route::get('/' , [TaskController::class , 'index']);
+                Route::post('/update_status/{id}' , [TaskController::class , 'update_task_status']);
+            });
+
+            // news
+            Route:: group(['prefix' => 'news'] , function(){
+                Route::get('/' , [NewsController::class , 'index']);
+            });
+
+        });
+        
         // complaints
         Route:: group(['prefix' => 'complaints'] , function(){
             Route::get('/' , [ComplaintController::class , 'index']);
@@ -53,11 +66,7 @@ use Illuminate\Support\Facades\Route;
 
         });
         
-        // news
-        Route::get('/user-news' , [StaticController::class , 'news']);
         
-         // tasks
-        Route::get('/user-tasks' , [StaticController::class , 'tasks']);
 
     });
 
