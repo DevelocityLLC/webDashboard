@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
     Route::group(['prefix' => 'admin'] , function(){
         Route::post('/register' , [AdminController::class , 'register']);
         Route::post('/login' , [AdminController::class , 'login']);
+        Route::get('/profile' , [AdminController::class , 'profile']);
     });
 
 

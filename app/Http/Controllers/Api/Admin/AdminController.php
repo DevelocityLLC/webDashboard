@@ -170,14 +170,15 @@ class AdminController extends Controller
     }
 
 
+    public function profile()
+    {
+        $admin = auth('admin-api')->user();
 
-
-
-
-
-
-
-
-
-
+        if($admin){
+            return $this->apiResponse( new AdminResource($admin), 200 , 'admin profile');
+        }else{
+            return $this->apiResponse(null, 404 , 'not found');
+        }
+    }
+    
 }
