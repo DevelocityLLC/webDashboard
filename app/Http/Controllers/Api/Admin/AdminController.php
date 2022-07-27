@@ -163,13 +163,13 @@ class AdminController extends Controller
 
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        $request->user()->tokens()->delete();
+        auth('admin-api')->user()->tokens()->delete();
         return $this->apiResponse(true , 200 , 'admin has logout successfully');
     }
-
-
+    
+    
     public function profile()
     {
         $admin = auth('admin-api')->user();
@@ -177,7 +177,7 @@ class AdminController extends Controller
         if($admin){
             return $this->apiResponse( new AdminResource($admin), 200 , 'admin profile');
         }else{
-            return $this->apiResponse(null, 404 , 'not found');
+            return $this->apiResponse(null, 404 , 'please, login firstly');
         }
     }
     

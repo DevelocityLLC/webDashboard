@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
     Route::group(['prefix' => 'admin'] , function(){
         Route::post('/register' , [AdminController::class , 'register']);
         Route::post('/login' , [AdminController::class , 'login']);
+        Route::post('/logout' , [AdminController::class , 'logout']);
         Route::get('/profile' , [AdminController::class , 'profile']);
     });
 
@@ -105,28 +106,6 @@ use Illuminate\Support\Facades\Route;
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // logout
-        Route::post('admin/logout' , [AdminController::class , 'logout']);
     });
 
 
